@@ -5,19 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.concurrent.ConcurrentHashMap
 
 @RestController
 class CustomerController {
     @Autowired
     private lateinit var customerService: CustomerService
 
+    @Autowired
+    private lateinit var jwtService: JwtService
+
     @GetMapping(value = ["/customers"])
     fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: String) = customerService.searchCustomers(nameFilter)
 
     @GetMapping(value = ["/customer/{id}"])
     fun getCustomer(@PathVariable id: Int): ResponseEntity<Customer> {
-        val customer = customerService.getCustomer(id) ?: throw CustomerNotFoundException("customer '$id' not found")
+        var customer = customerService.getCustomer(id) ?: throw CustomerNotFoundException("customer '$id' not found")
+        customer.name = jwtService.makeJwt()
         return ResponseEntity(customer, HttpStatus.OK)
     }
 
