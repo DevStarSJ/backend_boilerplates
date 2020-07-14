@@ -21,6 +21,7 @@ class CustomerController {
     fun getCustomer(@PathVariable id: Int): ResponseEntity<Customer> {
         var customer = customerService.getCustomer(id) ?: throw CustomerNotFoundException("customer '$id' not found")
         customer.name = jwtService.makeJwt()
+        jwtService.checkJwt(customer.name)
         return ResponseEntity(customer, HttpStatus.OK)
     }
 
