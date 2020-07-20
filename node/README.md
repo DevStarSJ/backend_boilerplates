@@ -5,7 +5,7 @@
 ### Make New Table
 1. make entity (user.ts)
 2. yarn typeorm migration:generate -n createUser
-3. tsc
+3. yarn tsc
 4. yarn typeorm migration:run
 
 ### Alter Table

@@ -1,4 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from "typeorm";
+import { Item } from "./Item";
 
 @Entity('users')
 export class User {
@@ -10,6 +11,9 @@ export class User {
 
     @Column()
     public password: string;
+
+    @OneToMany(type => Item, item => item.user)
+    items: Item[];
 
     @CreateDateColumn({name: 'created_at', type: "timestamp"})
     public createdAt: Date;
