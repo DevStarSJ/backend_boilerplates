@@ -26,7 +26,7 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 app.use('/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerSpec));
 
 useExpressServer(app, {
-	controllers: [__dirname + "/controllers/**/*.js"],
+	controllers: [__dirname + "/controller/**/*.js"],
   middlewares: [PrintResponse],
 	defaultErrorHandler: false,
 	classTransformer: false,

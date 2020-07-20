@@ -33,7 +33,7 @@ export default class UserController {
 		@Param('id') id: number
 	) {
 		const repository = getManager().getRepository(User);
-		const user = await repository.findOne(id);
+		const user = await repository.findOne(id, {relations: ["items"]});
 
 		return user;
 	}
