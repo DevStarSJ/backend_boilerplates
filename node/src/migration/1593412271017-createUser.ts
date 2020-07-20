@@ -11,7 +11,8 @@ export class createUser1593412271017 implements MigrationInterface {
             password varchar(255) NOT NULL,
             created_at timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
             updated_at timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6)
-          )`);
+          );
+          CREATE UNIQUE INDEX username_unique ON users (username);`);
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
