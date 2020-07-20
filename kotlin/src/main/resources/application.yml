@@ -1,0 +1,15 @@
+server:
+  address: localhost
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dev?autoReconnect=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: admin
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    show-sql: true

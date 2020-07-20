@@ -32,6 +32,12 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
 }
 
+apply {
+    plugin("kotlin")
+    plugin("kotlin-jpa")
+    plugin("org.jetbrains.kotlin.plugin.jpa")
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
