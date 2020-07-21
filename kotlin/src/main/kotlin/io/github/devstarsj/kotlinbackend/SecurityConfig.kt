@@ -34,6 +34,5 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests().antMatchers("/**").permitAll()
-
     }
 }
