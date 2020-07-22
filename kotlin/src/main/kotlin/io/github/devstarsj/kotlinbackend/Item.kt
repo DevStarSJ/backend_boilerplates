@@ -16,10 +16,12 @@ data class Item(
         var price: Int,
         @Column(name="user_id")
         var userId: Long? = null,
+
         @ManyToOne(optional = true)
         @JoinColumn(name = "user_id", insertable = false, updatable = false)
         @JsonIgnore
         val user: User? = null,
+
         @CreationTimestamp
         @Column(name = "created_at")
         var createdAt: LocalDateTime = LocalDateTime.now(),

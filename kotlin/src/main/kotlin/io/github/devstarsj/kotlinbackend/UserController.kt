@@ -12,9 +12,9 @@ import java.util.*
 @RequestMapping("user")
 class UserController(val userRepository: UserRepository) {
     @GetMapping(value= ["{id}"])
-    fun getUser(@PathVariable id: Long): ResponseEntity<Optional<User>> {
-        val user = userRepository.findById(id)
+    fun getUser(@PathVariable id: Long): ResponseEntity<Optional<UserDto?>> {
+        val userDto = userRepository.findById(id).map(User::toDto)
 
-        return ResponseEntity(user, HttpStatus.OK)
+        return ResponseEntity(userDto, HttpStatus.OK)
     }
 }

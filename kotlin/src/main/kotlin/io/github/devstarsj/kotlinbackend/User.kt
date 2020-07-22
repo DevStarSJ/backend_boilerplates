@@ -7,7 +7,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name= "users")
-data class User(
+class User(
         @Id
         @GeneratedValue
         var id: Long? = null,
@@ -21,4 +21,6 @@ data class User(
         @UpdateTimestamp
         @Column(name = "updated_at")
         var updatedAt: LocalDateTime = LocalDateTime.now()
-)
+) {
+        fun toDto(): UserDto? = UserDto(this)
+}
