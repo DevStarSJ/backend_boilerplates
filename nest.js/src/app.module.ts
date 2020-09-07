@@ -1,5 +1,7 @@
 import {Module} from '@nestjs/common'
 import {TypeOrmModule} from '@nestjs/typeorm'
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 import controllers from './controllers'
 import services from './services'
 
@@ -14,7 +16,9 @@ import services from './services'
       database: 'test',
       entities: ["dist/**/*.entity{.ts,.js}"],
       synchronize: true,
-    })
+    }),
+    AuthModule,
+    UsersModule
   ],
   controllers: controllers,
   providers: services,
