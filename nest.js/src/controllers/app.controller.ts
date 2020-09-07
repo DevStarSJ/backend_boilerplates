@@ -1,9 +1,9 @@
-import { Controller, Get, UseGuards, Post, Request } from '@nestjs/common';
-import { AppService } from '../services/app.service';
-import { AuthGuard } from '@nestjs/passport';
-import { LocalAuthGuard } from 'src/auth/local-auth.guard';
-import { AuthService } from 'src/auth/auth.service';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { Controller, Get, UseGuards, Post, Request } from '@nestjs/common'
+import { AppService } from '../services/app.service'
+import { AuthGuard } from '@nestjs/passport'
+import { LocalAuthGuard } from 'src/auth/local-auth.guard'
+import { AuthService } from 'src/auth/auth.service'
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard'
 
 @Controller()
 export class AppController {
@@ -14,7 +14,7 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.getHello()
   }
 
   @UseGuards(LocalAuthGuard)
