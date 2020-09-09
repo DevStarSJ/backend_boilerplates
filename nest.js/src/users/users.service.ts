@@ -2,6 +2,7 @@ import { Injectable, Inject, forwardRef } from '@nestjs/common'
 import { AuthService } from '../auth/auth.service'
 import { User } from './user.entity'
 import { getManager } from 'typeorm'
+import * as L from 'lodash'
 
 // export type User = any;
 
@@ -30,6 +31,22 @@ export class UsersService {
     user.username = username
     user.password = this.authService.encryptPassword(password)
     await getManager().save(user)
-    return this.authService.getToken(user)
+    return {
+      success: true,
+      user
+    }
+  }
+
+  async signIn(username: string, password: string) {
+    const repository = getManager().getRepository(User)
+    const users = await repository.find({ where: { username } })
+    const user = L.get(users, 0)
+    if (this.authService.verifyPassword(user, password)) {
+      return {
+        success: true,
+        token: this.authService.getToken(user)
+      }
+    }
+    return { success: false }
   }
 }

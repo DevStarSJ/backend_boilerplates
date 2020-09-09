@@ -33,6 +33,10 @@ export class AuthService {
     return bcrypt.hashSync(plainText, constants.PASSWORD_SALT)
   }
 
+  verifyPassword(user: User, plainPassword: string) {
+    return bcrypt.compareSync(plainPassword, user.password)
+  }
+
   getToken(user: User): string {
     const payload = {
       username: user.username,
@@ -40,7 +44,6 @@ export class AuthService {
       userId: user.id
     }
     const token = this.jwtService.sign(payload)
-    console.log('token =', token)
     return token
   }
 }

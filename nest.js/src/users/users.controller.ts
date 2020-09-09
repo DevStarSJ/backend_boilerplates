@@ -14,12 +14,17 @@ export class UsersController {
     @Body('username') username: string,
     @Body('password') password: string,
   ) {
-    const token = await this.usersService.signUp(username, password)
-    console.log('access_token =', token)
-    return {
-      access_token: token
-    }
+    return await this.usersService.signUp(username, password)
   }
+  
+  @Post('users/sign_in')
+  async signIn(
+    @Body('username') username: string,
+    @Body('password') password: string,
+  ) {
+    return await this.usersService.signIn(username, password)
+  }
+
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
