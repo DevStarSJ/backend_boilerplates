@@ -1,11 +1,15 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
-import dotenv from 'dotenv'
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
 
 dotenv.config()
+
+// import newrelic from 'newrelic'
+// export { newrelic }
+require('newrelic')
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
