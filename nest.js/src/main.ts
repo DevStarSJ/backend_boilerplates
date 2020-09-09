@@ -6,10 +6,10 @@ import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
 
 dotenv.config()
+// .env 파일에 영향을 받는 코드들은 이후에 선언되어야 함
 
-// import newrelic from 'newrelic'
-// export { newrelic }
 require('newrelic')
+import log from './middlewares/log'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
@@ -29,6 +29,8 @@ async function bootstrap() {
     .build()
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('docs', app, document)
+
+  app.use(log)
 
   await app.listen(3000)
 }
