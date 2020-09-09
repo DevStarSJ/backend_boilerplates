@@ -41,12 +41,11 @@ export class UsersService {
     const repository = getManager().getRepository(User)
     const users = await repository.find({ where: { username } })
     const user = L.get(users, 0)
-    if (this.authService.verifyPassword(user, password)) {
-      return {
-        success: true,
-        token: this.authService.getToken(user)
-      }
+    if (!user) return { success: false }
+    if (!this.authService.verifyPassword(user, password)) return { success: false }
+    return {
+      success: true,
+      token: this.authService.getToken(user)
     }
-    return { success: false }
   }
 }

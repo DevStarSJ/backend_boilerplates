@@ -1,12 +1,18 @@
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger'
-import * as dotenv from 'dotenv'
+import dotenv from 'dotenv'
+import cors from 'cors'
+import bodyParser from 'body-parser'
 
 dotenv.config()
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
+
+  app.use(cors())
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
   
   const options = new DocumentBuilder()
     .setTitle('API List')

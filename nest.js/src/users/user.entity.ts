@@ -3,17 +3,17 @@ import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateCol
 @Entity('users')
 export class User {
     @PrimaryGeneratedColumn()
-    public id: number;
+    public id: number
 
     @Column({unique: true})
-    public username: string;
+    public username: string
 
     @Column()
-    public password: string;
+    public password: string
 
     @CreateDateColumn({name: 'created_at', type: 'timestamp'})
-    public createdAt: Date;
+    public createdAt: Date
 
     @UpdateDateColumn({name: 'updated_at',type: 'timestamp'})
-    public updatedAt: Date;
+    public updatedAt: Date
 }
