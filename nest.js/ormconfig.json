@@ -6,5 +6,6 @@
   "password": "admin",
   "database": "test",
   "entities": ["dist/**/*.entity{.ts,.js}"],
-  "synchronize": true
+  "synchronize": true,
+  "logging": ["query", "error"]
 }
