@@ -1,9 +1,10 @@
-import { Controller, Get, UseGuards, Request, Post, Body, Response } from '@nestjs/common'
+import { Controller, Get, UseGuards, Request, Post, Body, UnauthorizedException } from '@nestjs/common'
 import { ApiBody, ApiBearerAuth } from '@nestjs/swagger'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { UsersService } from './users.service'
 import { SignInDto } from './sign-in.dto'
 
+// @UseInterceptors(LoggingInterceptor)
 @Controller()
 export class UsersController {
 
@@ -19,12 +20,12 @@ export class UsersController {
   ) {
     return await this.usersService.signUp(username, password)
   }
-  
+
   @Post('users/sign_in')
-  async signIn(@Body() body: SignInDto, @Response() res) {
+  async signIn(@Body() body: SignInDto) {
     const result = await this.usersService.signIn(body.username, body.password)
-    res.status(!result.success ? 401 : 200)
-      .send(result)
+    if (!result.success) throw new UnauthorizedException('username or password are incorrect')
+    return result
   }
 
   @UseGuards(JwtAuthGuard)

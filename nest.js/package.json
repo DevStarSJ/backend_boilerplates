@@ -33,7 +33,9 @@
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express-winston": "^4.0.5",
     "lodash": "^4.17.20",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "newrelic": "^6.13.0",
     "passport": "^0.4.1",
@@ -44,6 +46,7 @@
     "rxjs": "^6.5.4",
     "swagger-ui-express": "^4.1.4",
     "typeorm": "^0.2.25",
+    "winston": "^3.3.3",
     "winston-loggly-bulk": "^3.1.1"
   },
   "devDependencies": {
