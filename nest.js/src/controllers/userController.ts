@@ -1,15 +1,14 @@
 import { Controller, Get, UseGuards, Request, Post, Body, UnauthorizedException } from '@nestjs/common'
 import { ApiBody, ApiBearerAuth } from '@nestjs/swagger'
-import { JwtAuthGuard } from '../auth/jwt-auth.guard'
-import { UsersService } from './users.service'
-import { SignInDto } from './sign-in.dto'
+import { JwtAuthGuard } from '../services/auth/jwtAuthGuard'
+import { UserService } from '../services/userService'
+import { SignInDto } from '../dtos/signInDto'
 
-// @UseInterceptors(LoggingInterceptor)
 @Controller()
-export class UsersController {
+export class UserController {
 
   constructor(
-    private usersService: UsersService
+    private usersService: UserService
   ) {}
 
   @Post('users/sign_up')

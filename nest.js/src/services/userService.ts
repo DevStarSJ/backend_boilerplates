@@ -1,11 +1,11 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common'
-import { AuthService } from '../auth/auth.service'
-import { User } from './user.entity'
+import { AuthService } from './authService'
+import { User } from '../models/user'
 import { getManager } from 'typeorm'
 import * as L from 'lodash'
 
 @Injectable()
-export class UsersService {
+export class UserService {
 
   constructor(
     @Inject(forwardRef(() => AuthService))

@@ -5,7 +5,7 @@
   "username": "root",
   "password": "admin",
   "database": "test",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["dist/models/**/*{.ts,.js}"],
   "synchronize": true,
   "logging": ["query", "error"]
 }
