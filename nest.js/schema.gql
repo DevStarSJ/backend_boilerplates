@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Mutation {
+  signUp(data: SignInInput!): SignUpDto!
+}
+
+type Query {
+  users: [UserDto!]!
+}
+
+input SignInInput {
+  password: String!
+  username: String!
+}
+
+type SignUpDto {
+  success: Boolean!
+  user: UserDto!
+}
+
+type UserDto {
+  createdAt: DateTime!
+  id: Float!
+  updatedAt: DateTime!
+  username: String!
+}
