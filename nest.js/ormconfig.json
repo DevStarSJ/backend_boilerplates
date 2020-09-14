@@ -6,6 +6,13 @@
   "password": "admin",
   "database": "test",
   "entities": ["dist/models/**/*{.ts,.js}"],
+  "migrations": ["dist/migration/**/*{.ts,.js}"],
+  "logging": ["query", "error"],
   "synchronize": false,
-  "logging": ["query", "error"]
+  "migrationsRun": true,
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+ }
 }
