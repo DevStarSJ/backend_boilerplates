@@ -5,9 +5,9 @@ import { PassportModule } from '@nestjs/passport'
 import { GraphQLModule } from '@nestjs/graphql'
 import jwtModule from './modules/jwtMoudle'
 import services from './services'
+import resolvers from './graphql/resolvers'
 import models from './models'
 import controllers from './controllers'
-import { UserResolver } from './graphql/resolvers/userResolver'
 
 @Module({
   imports: [
@@ -20,7 +20,7 @@ import { UserResolver } from './graphql/resolvers/userResolver'
       sortSchema: true,
     }),
   ],
-  providers: [ UserResolver, ...services],
+  providers: [ ...resolvers, ...services],
   controllers: controllers
 })
 export class AppModule {

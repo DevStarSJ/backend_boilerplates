@@ -16,7 +16,7 @@ export class ItemDto {
   // @Field()
   // userId?: number
 
-  @Field(type => UserDto)
+  @Field(type => UserDto, { nullable: true })
   user?: UserDto
 
   @Field()

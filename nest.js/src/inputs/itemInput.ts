@@ -1,16 +1,16 @@
-import { InputType, Field } from '@nestjs/graphql'
+import { InputType, Field, Int } from '@nestjs/graphql'
 
 @InputType()
-export class ItemInInput {
-  @Field()
+export class ItemInput {
+  @Field(() => Int, { nullable: true })
   readonly id?: number
 
-  @Field()
-  readonly name!: string
+  @Field({ nullable: true })
+  readonly name?: string
 
-  @Field()
-  readonly price!: number
+  @Field(() => Int, { nullable: true })
+  readonly price?: number
 
-  @Field({ name: 'user_id' })
-  readonly userId: number
+  @Field(() => Int, { nullable: true })
+  readonly userId?: number
 }

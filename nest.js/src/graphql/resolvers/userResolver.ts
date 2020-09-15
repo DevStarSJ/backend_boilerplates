@@ -1,6 +1,5 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql'
 import { UserService } from '../../services/userService'
-import { getManager } from 'typeorm'
 import { User } from '../../models/user'
 import { UserDto } from '../../dtos/userDto'
 import { SignUpDto } from '../../dtos/signUpDto'
@@ -15,8 +14,7 @@ export class UserResolver {
 
   @Query(() => [ UserDto ])
   async users() {
-    const repositoy = getManager().getRepository(User)
-    return await repositoy.find()
+    return await User.find({relations: ['items']})
   }
 
   @Mutation(() => SignUpDto)

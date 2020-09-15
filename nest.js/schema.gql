@@ -13,14 +13,23 @@ type ItemDto {
   name: String!
   price: Float!
   updatedAt: DateTime!
-  user: UserDto!
+  user: UserDto
+}
+
+input ItemInput {
+  id: Int
+  name: String
+  price: Int
+  userId: Int
 }
 
 type Mutation {
+  createItem(item: ItemInput!): ItemDto!
   signUp(data: SignInInput!): SignUpDto!
 }
 
 type Query {
+  items: [ItemDto!]!
   users: [UserDto!]!
 }
 
