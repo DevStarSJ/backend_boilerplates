@@ -7,6 +7,15 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type ItemDto {
+  createdAt: DateTime!
+  id: Float!
+  name: String!
+  price: Float!
+  updatedAt: DateTime!
+  user: UserDto!
+}
+
 type Mutation {
   signUp(data: SignInInput!): SignUpDto!
 }
@@ -28,6 +37,7 @@ type SignUpDto {
 type UserDto {
   createdAt: DateTime!
   id: Float!
+  items: [ItemDto!]
   updatedAt: DateTime!
   username: String!
 }
