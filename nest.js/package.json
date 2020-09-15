@@ -21,8 +21,9 @@
     "test:cov": "jest --config ./test/unit/config.json --coverage ",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/e2e/config.json",
-    "migration:generate": "typeorm migration:generate -n",
-    "migration:run": "nest build && typeorm migration:run"
+    "migration:generate": "nest build && typeorm migration:generate -n",
+    "migration:run": "yarn migration:clear && nest build && typeorm migration:run",
+    "migration:clear": "rimraf dist/migration"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
