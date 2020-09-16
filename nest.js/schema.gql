@@ -26,11 +26,13 @@ input ItemInput {
 
 type Mutation {
   createItem(item: ItemInput!): Item!
+  removeItem(id: Float!): SuccessType!
   signUp(data: SignInInput!): SignUpType!
+  updateItem(item: ItemInput!): Item!
 }
 
 type Query {
-  items: [Item!]!
+  items(id: Float): [Item!]!
   users: [User!]!
 }
 
@@ -42,6 +44,10 @@ input SignInInput {
 type SignUpType {
   success: Boolean!
   user: UserType!
+}
+
+type SuccessType {
+  success: Boolean!
 }
 
 type User {
