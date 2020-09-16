@@ -14,9 +14,9 @@ const option = {
       tags: ['NestJS'],
       json: true
     }),
-    new winston.transports.Console({ 
-      level: 'info'
-    })
+    // new winston.transports.Console({ 
+    //   level: 'info'
+    // })
   ],
   format: winston.format.json(),
   meta: true,
