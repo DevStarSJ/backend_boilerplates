@@ -1,8 +1,8 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql'
 import { UserService } from '../../services/userService'
 import { User } from '../../models/user'
-import { UserDto } from '../../dtos/userDto'
-import { SignUpDto } from '../../dtos/signUpDto'
+// import { UserDto } from '../../dtos/userDto'
+import { SignUpType } from '../../types/signUpType'
 import { SignInInput } from '../../inputs/signInInput'
 
 
@@ -12,12 +12,12 @@ export class UserResolver {
     private readonly userService: UserService,
   ) {}
 
-  @Query(() => [ UserDto ])
+  @Query(() => [ User ])
   async users() {
     return await User.find({relations: ['items']})
   }
 
-  @Mutation(() => SignUpDto)
+  @Mutation(() => SignUpType)
   async signUp(@Args('data') data: SignInInput) {
     return await this.userService.signUp(data.username, data.password)
   }

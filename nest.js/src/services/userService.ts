@@ -1,7 +1,7 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common'
 import { AuthService } from './authService'
 import { User } from '../models/user'
-import * as L from 'lodash'
+import L from 'lodash'
 
 @Injectable()
 export class UserService {
@@ -12,9 +12,10 @@ export class UserService {
   ) {}
 
   async signUp(username: string, password: string) {
-    const user = new User()
-    user.username = username
-    user.password = this.authService.encryptPassword(password)
+    const user = new User(
+      username,
+      this.authService.encryptPassword(password)
+    )
     await user.save()
     return {
       success: true,

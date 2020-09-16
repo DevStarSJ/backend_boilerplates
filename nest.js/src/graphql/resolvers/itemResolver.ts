@@ -1,6 +1,6 @@
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql'
 import { ItemService } from '../../services/itemService'
-import { ItemDto } from 'src/dtos/itemDto'
+// import { ItemDto } from 'src/dtos/itemDto'
 import { Item } from 'src/models/item'
 import { ItemInput } from 'src/inputs/itemInput'
 
@@ -11,12 +11,12 @@ export class ItemResolver {
     private readonly itemService: ItemService,
   ) {}
 
-  @Query(() => [ ItemDto ])
+  @Query(() => [ Item ])
   async items() {
     return await Item.find({relations: ['user']})
   }
 
-  @Mutation(() => ItemDto)
+  @Mutation(() => Item)
   async createItem(@Args('item') params: ItemInput) {
     return await this.itemService.create(params)
   }

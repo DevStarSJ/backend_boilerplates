@@ -2,7 +2,7 @@ import { Controller, Get, UseGuards, Request, Post, Body, UnauthorizedException 
 import { ApiBody, ApiBearerAuth } from '@nestjs/swagger'
 import { JwtAuthGuard } from '../services/auth/jwtAuthGuard'
 import { UserService } from '../services/userService'
-import { SignInDto } from '../dtos/signInDto'
+import { SignInInput } from '../inputs/signInInput'
 
 @Controller()
 export class UserController {
@@ -12,8 +12,8 @@ export class UserController {
   ) {}
 
   @Post('users/sign_up')
-  @ApiBody({ type: SignInDto, required: true })
-  async signUp( //@Body() body: SignInDto) {
+  @ApiBody({ type: SignInInput, required: true })
+  async signUp( //@Body() body: SignInInput) {
     @Body('username') username: string,
     @Body('password') password: string,
   ) {
@@ -21,7 +21,7 @@ export class UserController {
   }
 
   @Post('users/sign_in')
-  async signIn(@Body() body: SignInDto) {
+  async signIn(@Body() body: SignInInput) {
     const result = await this.usersService.signIn(body.username, body.password)
     if (!result.success) throw new UnauthorizedException('username or password are incorrect')
     return result

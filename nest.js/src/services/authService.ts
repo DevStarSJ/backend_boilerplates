@@ -10,13 +10,6 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(user: any) {
-    const payload = { username: user.username, sub: user.userId }
-    return {
-      access_token: this.jwtService.sign(payload)
-    }
-  }
-
   encryptPassword(plainText: string) {
     return bcrypt.hashSync(plainText, constants.PASSWORD_SALT)
   }
@@ -28,7 +21,6 @@ export class AuthService {
   getToken(user: User): string {
     const payload = {
       username: user.username,
-      sub: user.id,
       userId: user.id
     }
     const token = this.jwtService.sign(payload)

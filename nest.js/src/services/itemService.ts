@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common'
 import { Item } from '../models/item'
-import * as L from 'lodash'
 import { ItemInput } from 'src/inputs/itemInput'
 
 @Injectable()

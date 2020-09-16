@@ -7,13 +7,14 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type ItemDto {
+type Item {
   createdAt: DateTime!
-  id: Float!
+  id: ID!
   name: String!
-  price: Float!
+  price: Int!
   updatedAt: DateTime!
-  user: UserDto
+  user: User
+  userId: ID
 }
 
 input ItemInput {
@@ -24,13 +25,13 @@ input ItemInput {
 }
 
 type Mutation {
-  createItem(item: ItemInput!): ItemDto!
-  signUp(data: SignInInput!): SignUpDto!
+  createItem(item: ItemInput!): Item!
+  signUp(data: SignInInput!): SignUpType!
 }
 
 type Query {
-  items: [ItemDto!]!
-  users: [UserDto!]!
+  items: [Item!]!
+  users: [User!]!
 }
 
 input SignInInput {
@@ -38,15 +39,24 @@ input SignInInput {
   username: String!
 }
 
-type SignUpDto {
+type SignUpType {
   success: Boolean!
-  user: UserDto!
+  user: UserType!
 }
 
-type UserDto {
+type User {
+  createdAt: DateTime!
+  id: ID!
+  items: [Item!]
+  password: String!
+  updatedAt: DateTime!
+  username: String!
+}
+
+type UserType {
   createdAt: DateTime!
   id: Float!
-  items: [ItemDto!]
+  items: [Item!]
   updatedAt: DateTime!
   username: String!
 }

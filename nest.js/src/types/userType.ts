@@ -1,8 +1,8 @@
 import { ObjectType, Field } from '@nestjs/graphql'
-import { ItemDto } from './itemDto'
+import { Item } from '../models/item'
 
 @ObjectType()
-export class UserDto {
+export class UserType {
 
   @Field()
   readonly id?: number
@@ -10,8 +10,8 @@ export class UserDto {
   @Field()
   username!: string
 
-  @Field(type => [ItemDto], { nullable: true })
-  items?: ItemDto[]
+  @Field(() => [Item], { nullable: true })
+  items?: Item[]
 
   @Field()
   createdAt: Date

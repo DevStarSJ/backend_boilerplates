@@ -1,12 +1,12 @@
 import { ObjectType, Field } from '@nestjs/graphql'
-import { UserDto } from './userDto'
+import { UserType } from './userType'
 
 @ObjectType()
-export class SignUpDto {
+export class SignUpType {
 
   @Field()
   readonly success!: boolean
 
   @Field()
-  readonly user: UserDto
+  readonly user: UserType
 }
