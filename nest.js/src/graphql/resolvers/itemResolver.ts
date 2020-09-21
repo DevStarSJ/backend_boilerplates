@@ -7,7 +7,7 @@ import { SuccessType } from '../../types/SuccessType'
 import { User } from '../../models/user'
 
 
-@Resolver('Item')
+@Resolver(() => Item)
 export class ItemResolver {
   constructor(
     private readonly itemService: ItemService,
@@ -34,8 +34,8 @@ export class ItemResolver {
     return await this.itemService.remove(id)
   }
 
-  // @ResolveField()
-  // public async user(@Parent() parent): Promise<User> {
-  //   return User.findOne(parent.userId)
-  // }
+  @ResolveField()
+  public async user(@Parent() parent) {
+    return await User.findOne(parent.userId)
+  }
 }

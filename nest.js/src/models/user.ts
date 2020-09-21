@@ -17,13 +17,13 @@ export class User extends BaseEntity {
   @Field({ nullable: false })
   public password: string
 
-  @Field(() => [Item], { nullable: true })
-  @OneToMany(() => Item, item => item.user)
-  items: Item[]
-
   // @Field(() => [Item], { nullable: true })
   // @OneToMany(() => Item, item => item.user)
-  // items: Promise<Item[]>
+  // items: Item[]
+
+  @Field(() => [Item], { nullable: true })
+  @OneToMany(() => Item, item => item.user)
+  items: Promise<Item[]>
 
   @Field()
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})

@@ -22,15 +22,15 @@ export class Item extends BaseEntity {
   @Column({name: 'user_id', nullable: true})
   userId: number
 
-  @Field(() => User, { nullable: true })
-  @ManyToOne(() => User, user => user.items)
-  @JoinColumn({ name: 'user_id' })
-  user?: User
-
   // @Field(() => User, { nullable: true })
-  // @ManyToOne(() => User, user => user.items, { primary: true })
+  // @ManyToOne(() => User, user => user.items)
   // @JoinColumn({ name: 'user_id' })
-  // user: Promise<User>
+  // user?: User
+
+  @Field(() => User, { nullable: true })
+  @ManyToOne(() => User, user => user.items, { primary: true })
+  @JoinColumn({ name: 'user_id' })
+  user: Promise<User>
 
   @Field()
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
