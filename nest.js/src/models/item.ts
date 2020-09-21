@@ -27,6 +27,11 @@ export class Item extends BaseEntity {
   @JoinColumn({ name: 'user_id' })
   user?: User
 
+  // @Field(() => User, { nullable: true })
+  // @ManyToOne(() => User, user => user.items, { primary: true })
+  // @JoinColumn({ name: 'user_id' })
+  // user: Promise<User>
+
   @Field()
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})
   public createdAt: Date
