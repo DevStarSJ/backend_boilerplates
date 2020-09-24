@@ -1,9 +1,7 @@
 import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
-import Author from '../../models/author'
 import Book from '../../models/book'
 import BookInput from '../../inputs/bookInput'
 import Genre from '../../models/genre'
-// import BookGenre from '../../models/bookGenre'
 
 @Resolver(() => Book)
 export default class BookResolver {
@@ -24,12 +22,9 @@ export default class BookResolver {
     await book.save()
     return book
   }
-
-  // @ResolveField()
-  // public async books(@Parent() parent) {
-  //   // const bookGenres = await BookGenre.find({where: {genreId: parent.id}, relations: ['book']})
-  //   // const books: Book[] = []
-  //   // bookGenres.forEach(async bookGenre => books.concat(await bookGenre.books))
-  //   return await parent.books
-  // }
+  
+  @ResolveField(() => [Genre])
+  public async genres(@Parent() parent) {
+    return await parent.genres
+  }
 }

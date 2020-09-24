@@ -3,11 +3,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  Column, OneToMany,
+  Column, 
   JoinColumn,
   ManyToOne, BaseEntity, ManyToMany, JoinTable
 } from 'typeorm'
-// import BookGenre from './bookGenre'
 import Author from './author'
 import { Field, ObjectType } from '@nestjs/graphql'
 import Genre from './genre'
@@ -39,12 +38,7 @@ export default class Book extends BaseEntity {
   @JoinColumn({name: 'author_id'})
   author: Promise<Author>;
 
-  // @Field(() => BookGenre, { nullable: true })
-  // @OneToMany(() => BookGenre, bookGenre => bookGenre.genres)
-  // bookGenres: Promise<BookGenre[]>;
-
   @ManyToMany(() => Genre, genre => genre.books, {primary: true})
-  // @JoinTable()
   @JoinTable({
     name: 'books_genres',
     joinColumn: { name: 'book_id', referencedColumnName: 'id' },

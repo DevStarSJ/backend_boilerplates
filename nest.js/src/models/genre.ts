@@ -5,7 +5,7 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  OneToMany, PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable
+  PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable
 } from 'typeorm'
 import Book from './book'
 // import BookGenre from './bookGenre'
@@ -28,11 +28,7 @@ export default class Genre extends BaseEntity {
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt: Date;
 
-  // @Field(() => Book, { nullable: true })
-  // @OneToMany(() => BookGenre, bookGenre => bookGenre.books)
-  // books: Promise<Book[]>;
   @ManyToMany(() => Book, book => book.genres, {primary: true})
-  // @JoinTable()
   @JoinTable({
     name: 'books_genres',
     joinColumn: { name: 'genre_id', referencedColumnName: 'id' },

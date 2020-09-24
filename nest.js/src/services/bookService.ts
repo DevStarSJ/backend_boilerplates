@@ -24,23 +24,27 @@ export class BookService {
     await genre.save()
     console.log('book1.id, book2.id, genre.id => ', book1.id, book2.id, genre.id)
 
-    await (async () => { 
-      // Do something before delay
-      console.log('before delay')
+    // await (async () => { 
+    //   // Do something before delay
+    //   console.log('before delay')
 
-      function delay(ms: number) {
-        return new Promise( resolve => setTimeout(resolve, ms))
-      }
+    //   function delay(ms: number) {
+    //     return new Promise( resolve => setTimeout(resolve, ms))
+    //   }
 
-      await delay(1000)
+    //   await delay(1000)
 
-      // Do something after
-      console.log('after delay')
-    })()
+    //   // Do something after
+    //   console.log('after delay')
+    // })()
     
-    genre.books = Promise.resolve([book1, book2])
+    // genre.books = Promise.resolve([book1, book2])
     // ;(await genre.books).push(book1)
-    await genre.save()
+    // await genre.save()
+    book1.genres = Promise.resolve([genre])
+    book2.genres = Promise.resolve([genre])
+    book1.save()
+    book2.save()
 
     // genre.books = []
     // genre.books.push(book1)
