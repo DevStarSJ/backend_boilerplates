@@ -1,4 +1,3 @@
-
 import { Field, ID, ObjectType } from '@nestjs/graphql'
 import {
   Entity,
@@ -8,7 +7,6 @@ import {
   PrimaryGeneratedColumn, BaseEntity, ManyToMany, JoinTable
 } from 'typeorm'
 import Book from './book'
-// import BookGenre from './bookGenre'
 
 @ObjectType()
 @Entity('genres')

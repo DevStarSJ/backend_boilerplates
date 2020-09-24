@@ -1,7 +1,8 @@
-import { Args, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
 import Book from '../../models/book'
 import Genre from '../../models/genre'
 import GenreInput from '../../inputs/genreInput'
+import { IGraphQLContext } from '../context'
 
 @Resolver(() => Genre)
 export default class GenreResolver {
@@ -23,7 +24,8 @@ export default class GenreResolver {
   }
 
   @ResolveField(() => [Book])
-  public async books(@Parent() parent) {
-    return await parent.books
+  public async books(@Parent() parent, @Context() { genreBooksLoader }: IGraphQLContext) {
+    // return await parent.books
+    return await genreBooksLoader.load(parent.id)
   }
 }

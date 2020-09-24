@@ -8,6 +8,7 @@ import services from './services'
 import resolvers from './graphql/resolvers'
 import models from './models'
 import controllers from './controllers'
+import context from './graphql/context'
 
 @Module({
   imports: [
@@ -18,6 +19,8 @@ import controllers from './controllers'
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       sortSchema: true,
+      playground: true,
+      context,
     }),
   ],
   providers: [ ...resolvers, ...services],

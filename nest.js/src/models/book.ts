@@ -33,7 +33,6 @@ export default class Book extends BaseEntity {
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt: Date;
 
-  @Field(() => Author, { nullable: true })
   @ManyToOne(() => Author, author => author.books, {primary: true})
   @JoinColumn({name: 'author_id'})
   author: Promise<Author>;

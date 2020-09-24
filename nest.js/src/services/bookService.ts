@@ -21,42 +21,8 @@ export class BookService {
 
     const genre = new Genre()
     genre.name = 'COMIC'
+    genre.books = Promise.resolve([book1, book2])
     await genre.save()
-    console.log('book1.id, book2.id, genre.id => ', book1.id, book2.id, genre.id)
-
-    // await (async () => { 
-    //   // Do something before delay
-    //   console.log('before delay')
-
-    //   function delay(ms: number) {
-    //     return new Promise( resolve => setTimeout(resolve, ms))
-    //   }
-
-    //   await delay(1000)
-
-    //   // Do something after
-    //   console.log('after delay')
-    // })()
-    
-    // genre.books = Promise.resolve([book1, book2])
-    // ;(await genre.books).push(book1)
-    // await genre.save()
-    book1.genres = Promise.resolve([genre])
-    book2.genres = Promise.resolve([genre])
-    book1.save()
-    book2.save()
-
-    // genre.books = []
-    // genre.books.push(book1)
-    // genre.books.push(book2)
-    // book1.genres = [genre]
-    // book2.genres = [genre]
-    // await book1.save()
-    // await book2.save()
-    // console.log( genre.books)
-    // ;(await genre.books).push(book1)
-    // ;(await genre.books).push(book2)
-    // await genre.save()
 
     return await Book.count()
   }
