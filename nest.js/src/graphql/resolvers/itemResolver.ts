@@ -1,6 +1,5 @@
 import { Resolver, Query, Args, Mutation, ResolveField, Parent } from '@nestjs/graphql'
 import { ItemService } from '../../services/itemService'
-// import { ItemDto } from 'src/dtos/itemDto'
 import { Item } from '../../models/item'
 import { ItemInput } from '../../inputs/itemInput'
 import { SuccessType } from '../../types/SuccessType'

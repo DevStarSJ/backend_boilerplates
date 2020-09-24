@@ -1,8 +1,8 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql'
 import AuthorInput from '../../inputs/authorInput'
-import { Author } from '../../models/author'
+import Author from '../../models/author'
 
-@Resolver('Author')
+@Resolver(Author)
 export class AuthorResolver {
   @Query(() => [Author])
   async authors() {

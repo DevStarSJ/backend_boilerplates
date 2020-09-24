@@ -114,22 +114,16 @@ export class createForDataloaderTest1600674685133 implements MigrationInterface 
     name: 'books_genres',
     columns: [
       {
-        name: 'id',
-        type: 'INTEGER',
-        isPrimary: true,
-        isUnique: true,
-        isGenerated: true,
-        generationStrategy: 'increment',
-      },
-      {
         name: 'book_id',
         type: 'INTEGER',
-        isNullable: true,
+        isNullable: false,
+        isPrimary: true,
       },
       {
         name: 'genre_id',
         type: 'INTEGER',
-        isNullable: true,
+        isNullable: false,
+        isPrimary: true,
       },
       {
         name: 'created_at',
@@ -147,18 +141,35 @@ export class createForDataloaderTest1600674685133 implements MigrationInterface 
       }],
   });
 
+  // private booksGenresForeignKeys = [
+  //   new TableForeignKey({
+  //     columnNames: ['book_id'],
+  //     referencedColumnNames: ['id'],
+  //     onDelete: 'CASCADE',
+  //     referencedTableName: 'books',
+  //   }),
+  //   new TableForeignKey({
+  //     columnNames: ['genre_id'],
+  //     referencedColumnNames: ['id'],
+  //     onDelete: 'CASCADE',
+  //     referencedTableName: 'genres',
+  //   }),
+  // ]
+
   public async up(queryRunner: QueryRunner): Promise<any> {
     await queryRunner.createTable(this.authorTable)
     await queryRunner.createTable(this.bookTable)
     await queryRunner.createForeignKey('books', this.foreignKey)
     await queryRunner.createTable(this.genreTable)
     await queryRunner.createTable(this.genreBookTable)
+    // await queryRunner.createForeignKey('books_genres', this.booksGenresForeignKeys[0])
+    // await queryRunner.createForeignKey('books_genres', this.booksGenresForeignKeys[1])
   }
 
   public async down(queryRunner: QueryRunner): Promise<any> {
-    await queryRunner.dropTable(this.authorTable)
+    await queryRunner.dropTable(this.genreBookTable)
     await queryRunner.dropTable(this.bookTable)
     await queryRunner.dropTable(this.genreTable)
-    await queryRunner.dropTable(this.genreBookTable)
+    await queryRunner.dropTable(this.authorTable)
   }
 }

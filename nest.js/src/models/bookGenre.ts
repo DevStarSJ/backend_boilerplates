@@ -1,38 +1,35 @@
-import {
-  Entity,
-  PrimaryColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
-  ManyToOne, JoinColumn, PrimaryGeneratedColumn, BaseEntity,
-} from 'typeorm'
-import { Genre } from './genre'
-import { Book } from './book'
+// import {
+//   Entity,
+//   PrimaryColumn,
+//   CreateDateColumn,
+//   UpdateDateColumn,
+//   BaseEntity, ManyToOne, JoinColumn
+// } from 'typeorm'
+// import Book from './book'
+// import Genre from './genre'
 
-@Entity()
-export class BookGenre extends BaseEntity {
+// @Entity('books_genres')
+// export default class BookGenre extends BaseEntity {
+//   @PrimaryColumn({name: 'book_id'})
+//   // @ManyToOne(() => Book, book => book.genres)
+//   bookId: number;
 
-  @PrimaryGeneratedColumn()
-  id: number;
+//   @PrimaryColumn({name: 'genre_id'})
+//   genreId: number;
 
-  @PrimaryColumn({name: 'book_id'})
-  bookId: number;
+//   @CreateDateColumn({name: 'created_at'})
+//   createdAt: Date;
 
-  @PrimaryColumn({name: 'genre_id'})
-  genreId: number;
+//   @UpdateDateColumn({name: 'updated_at'})
+//   updatedAt: Date;
 
-  @CreateDateColumn({name: 'created_at'})
-  createdAt: Date;
+//   // @Field(() => Book, { nullable: true })
+//   @ManyToOne(() => Book, book => book.genres, {primary: true})
+//   @JoinColumn({name: 'book_id'})
+//   books: Book[]
 
-  @UpdateDateColumn({name: 'updated_at'})
-  updatedAt: Date;
-
-  // Associations
-  @ManyToOne(() => Book, book => book.genreConnection, {primary: true})
-  @JoinColumn({name: 'book_id'})
-  book: Book[];
-
-  @ManyToOne(() => Genre,  genre => genre.bookConnection, {primary: true})
-  @JoinColumn({name: 'genre_id'})
-  genre: Genre[];
-}
+//   // @Field(() => Genre, { nullable: true })
+//   @ManyToOne(() => Genre,  genre => genre.books, {primary: true})
+//   @JoinColumn({name: 'genre_id'})
+//   genres: Genre[]
+// }

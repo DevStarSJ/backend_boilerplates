@@ -14,7 +14,6 @@ export class UserResolver {
 
   @Query(() => [ User ])
   async users() {
-    const users = await User.find() //({relations: ['items']})
     return await User.find() //({relations: ['items']})
   }
 

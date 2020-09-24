@@ -1,26 +1,25 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 import { BaseEntity, Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
-import { Book } from './book'
+import Book from './book'
 
 @ObjectType()
 @Entity('authors')
-export class Author extends BaseEntity {
+export default class Author extends BaseEntity {
   @Field()
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Field()
   @Column()
-  name: string;
+  name: string
 
   @CreateDateColumn({name: 'created_at'})
-  createdAt: Date;
+  createdAt: Date
 
   @CreateDateColumn({name: 'updated_at'})
-  updatedAt: Date;
+  updatedAt: Date
 
-  // Associations
-  // @Field()
-  @OneToMany(() => Book, book => book.authorConnection)
-  bookConnection: Promise<Book[]>;
+  @Field(() => [Book], { nullable: true })
+  @OneToMany(() => Book, book => book.author)
+  books: Promise<Book[]>
 }

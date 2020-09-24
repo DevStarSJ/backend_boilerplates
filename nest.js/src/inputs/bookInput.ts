@@ -23,7 +23,7 @@ class BookInput {
   readonly title: string;
 
   @Field()
-  readonly author: BookAuthorInput;
+  readonly authorId?: number;
 }
 
 export default BookInput

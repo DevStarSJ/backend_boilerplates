@@ -5,15 +5,16 @@ import {
   UpdateDateColumn,
   Column, OneToMany,
   JoinColumn,
-  ManyToOne, BaseEntity
+  ManyToOne, BaseEntity, ManyToMany, JoinTable
 } from 'typeorm'
-import { BookGenre } from './bookGenre'
-import { Author } from './author'
+// import BookGenre from './bookGenre'
+import Author from './author'
 import { Field, ObjectType } from '@nestjs/graphql'
+import Genre from './genre'
 
 @ObjectType()
 @Entity({name: 'books'})
-export class Book extends BaseEntity {
+export default class Book extends BaseEntity {
 
   @Field()
   @PrimaryGeneratedColumn()
@@ -27,23 +28,27 @@ export class Book extends BaseEntity {
   @Column({name: 'author_id'})
   authorId: number;
 
-  @Field()
   @CreateDateColumn({name: 'created_at'})
   createdAt: Date;
 
-  @Field()
   @UpdateDateColumn({name: 'updated_at'})
   updatedAt: Date;
 
-  @Field(() => Author)
-  author: Author;
-
-  // Associations
-
-  @ManyToOne(() => Author, author => author.bookConnection, {primary: true})
+  @Field(() => Author, { nullable: true })
+  @ManyToOne(() => Author, author => author.books, {primary: true})
   @JoinColumn({name: 'author_id'})
-  authorConnection: Promise<Author>;
+  author: Promise<Author>;
 
-  @OneToMany(() => BookGenre, bookGenre => bookGenre.genre)
-  genreConnection: Promise<BookGenre[]>;
+  // @Field(() => BookGenre, { nullable: true })
+  // @OneToMany(() => BookGenre, bookGenre => bookGenre.genres)
+  // bookGenres: Promise<BookGenre[]>;
+
+  @ManyToMany(() => Genre, genre => genre.books, {primary: true})
+  // @JoinTable()
+  @JoinTable({
+    name: 'books_genres',
+    joinColumn: { name: 'book_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'genre_id', referencedColumnName: 'id' },
+  })
+  genres: Promise<Genre[]>
 }

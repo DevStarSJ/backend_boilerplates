@@ -3,6 +3,7 @@
 # ------------------------------------------------------
 
 type Author {
+  books: [Book!]
   id: Float!
   name: String!
 }
@@ -11,10 +12,31 @@ input AuthorInput {
   name: String!
 }
 
+type Book {
+  author: Author
+  authorId: Float!
+  id: Float!
+  title: String!
+}
+
+input BookInput {
+  authorId: Float!
+  title: String!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+type Genre {
+  id: ID!
+  name: String!
+}
+
+input GenreInput {
+  name: String!
+}
 
 type Item {
   createdAt: DateTime!
@@ -35,6 +57,8 @@ input ItemInput {
 
 type Mutation {
   createAuthor(data: AuthorInput!): Author!
+  createBook(data: BookInput!): Book!
+  createGenre(data: GenreInput!): Genre!
   createItem(item: ItemInput!): Item!
   removeItem(id: Float!): SuccessType!
   signUp(data: SignInInput!): SignUpType!
@@ -44,6 +68,10 @@ type Mutation {
 type Query {
   author(id: Float!): Author
   authors: [Author!]!
+  book(id: Float!): Book
+  books: [Book!]!
+  genre(id: Float!): Genre
+  genres: [Genre!]!
   items(id: Float): [Item!]!
   users: [User!]!
 }
