@@ -88,6 +88,10 @@ type SignUpType {
   user: UserType!
 }
 
+type Subscription {
+  bookAdded: Book!
+}
+
 type SuccessType {
   success: Boolean!
 }

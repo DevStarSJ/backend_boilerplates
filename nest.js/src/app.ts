@@ -20,6 +20,7 @@ import context from './graphql/context'
       autoSchemaFile: 'schema.gql',
       sortSchema: true,
       playground: true,
+      installSubscriptionHandlers: true,
       context,
     }),
   ],

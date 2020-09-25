@@ -1,9 +1,12 @@
-import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
+import { Args, Context, Mutation, Parent, Query, ResolveField, Resolver, Subscription } from '@nestjs/graphql'
 import Book from '../../models/book'
 import BookInput from '../../inputs/bookInput'
 import Genre from '../../models/genre'
 import { IGraphQLContext } from '../context'
 import Author from 'src/models/author'
+import { PubSub } from 'graphql-subscriptions'
+
+const pubSub = new PubSub()
 
 @Resolver(() => Book)
 export default class BookResolver {
@@ -22,6 +25,7 @@ export default class BookResolver {
     book.title = input.title
     book.authorId = input.authorId
     await book.save()
+    pubSub.publish('bookAdded', {bookAdded: book})
     return book
   }
   
@@ -34,5 +38,10 @@ export default class BookResolver {
   @ResolveField(() => Author, { nullable: true })
   async author(@Parent() parent, @Context() { bookAuthorLoader }: IGraphQLContext) {
     return bookAuthorLoader.load(parent.id)
+  }
+
+  @Subscription(() => Book)
+  bookAdded() {
+    return pubSub.asyncIterator('bookAdded')
   }
 }
