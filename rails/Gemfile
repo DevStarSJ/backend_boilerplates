@@ -5,22 +5,14 @@ ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
-# Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -28,10 +20,72 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+
+gem 'annotate'
+gem 'awesome_print'
+gem 'dotenv-rails'
+gem 'pry-rails'
+gem 'rack-cors', require: 'rack/cors'
+gem 'versionist'
+gem 'jwt'
+gem 'olive_branch'
+gem 'pundit'
+gem 'kaminari'
+gem 'rails-i18n'
+
+gem 'graphql', '~> 1.10.4'
+gem 'graphiql-rails', '~> 1.7.0'
+gem 'graphql-batch'
+gem 'graphql-preload', git: 'https://github.com/Envek/graphql-preload'
+gem 'graphlient'
+
+gem 'mysql2'
+
+gem 'lograge', '~> 0.3.1'
+gem 'newrelic_rpm'
+gem 'syslogger', '~> 1.6.0'
+gem 'strip_attributes'
+gem 'silencer'
+gem 'logglier'
+gem "slack-notifier"
+
+gem 'rubocop-rails'
+gem 'faraday'
+gem 'sentry-raven'
+
+gem 'shrine', '~> 3.0'
+gem 'aws-sdk-s3', '~> 1.14'
+gem 'sidekiq'
+gem "symbol_serializer", git: "https://github.com/Bizongo/symbol-serializer"
+
+gem 'rubyXL'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
+  gem 'factory_bot'
+  gem 'factory_bot_rails', require: false
+  gem 'faker'
+  gem 'fuubar'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'pundit-matchers', '~> 1.0.2'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-its'
+  gem 'rspec-rails', '>= 3.8.2'
+  gem 'terminal-notifier'
+  gem 'timecop'
+
+  group :darwin do
+    gem 'rb-fchange', require: false
+    gem 'rb-fsevent', require: false
+    gem 'terminal-notifier-guard'
+  end
 end
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -40,14 +94,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails_best_practices', require: false
+  gem 'rubycritic',           require: false
+  gem 'rails-erd'
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
+  gem 'shoulda-matchers', '>=4.0.1'
+  gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'webmock'
+  gem 'wisper-rspec', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
