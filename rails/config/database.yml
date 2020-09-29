@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: test_rb
+  database: test_rb_development
