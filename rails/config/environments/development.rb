@@ -62,4 +62,14 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
+
+  # loggly = Logglier.new("https://logs-01.loggly.com/inputs/#{ENV["LOGGLY_KEY"]}/tag/rails-development", threaded: true, format: :json)
+  # # config.logger = Syslogger.new("poly-service-server",Syslog::LOG_PID, Syslog::LOG_LOCAL7)
+  # config.logger = loggly
+  # config.logger.level = Logger::DEBUG
+  # config.lograge.enabled = true
+  # config.lograge.formatter = Lograge::Formatters::Json.new
 end

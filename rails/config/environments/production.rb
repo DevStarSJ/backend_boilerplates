@@ -89,6 +89,20 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
+  if ENV["RAILS_LOG_TO_STDOUT"].present? && ENV["RAILS_LOG_TO_STDOUT"] == "1"
+    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+  else
+    # loggly = Logglier.new("https://logs-01.loggly.com/inputs/#{ENV["LOGGLY_KEY"]}/tag/poly-server", threaded: true, format: :json)
+    # config.logger = loggly
+
+    config.active_record.logger = nil
+    config.logger = ActiveSupport::TaggedLogging.new(Syslogger.new("rails", Syslog::LOG_PID, Syslog::LOG_LOCAL7))
+
+    config.logger.level = Logger::DEBUG
+    config.lograge.enabled = true
+    config.lograge.formatter = Lograge::Formatters::Json.new
+  end
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
