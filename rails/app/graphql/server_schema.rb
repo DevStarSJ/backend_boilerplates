@@ -8,4 +8,11 @@ class ServerSchema < GraphQL::Schema
 
   # Add built-in connections for pagination
   use GraphQL::Pagination::Connections
+
+  use GraphQL::Batch
+  use(GraphQL::Tracing::NewRelicTracing, set_transaction_name: true)
+
+  enable_preloading
 end
+
+ServerSchema.graphql_definition

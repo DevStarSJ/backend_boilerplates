@@ -1,8 +1,3 @@
 class MutationType < Base::BaseObject
-  # TODO: remove me
-  field :test_field, String, null: false,
-    description: "An example field added by the generator"
-  def test_field
-    "Hello World"
-  end
+  field :sign_up_user, mutation: Mutations::Users::SignUpUser
 end
