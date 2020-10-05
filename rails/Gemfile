@@ -60,6 +60,12 @@ gem "symbol_serializer", git: "https://github.com/Bizongo/symbol-serializer"
 
 gem 'rubyXL'
 
+gem 'omniauth-google-oauth2'
+gem 'omniauth-facebook'
+gem 'omniauth-kakao'
+gem 'omniauth-naver'
+gem 'omniauth-line'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
