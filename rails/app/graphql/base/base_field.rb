@@ -1,5 +1,5 @@
-module Types
+module Base
   class BaseField < GraphQL::Schema::Field
-    argument_class Types::BaseArgument
+    argument_class Base::BaseArgument
   end
 end
