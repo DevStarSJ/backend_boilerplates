@@ -53,7 +53,7 @@ gem 'rubocop-rails'
 gem 'faraday'
 gem 'sentry-raven'
 
-gem 'shrine', '~> 3.0'
+gem 'shrine', '~> 3.3'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'sidekiq'
 gem "symbol_serializer", git: "https://github.com/Bizongo/symbol-serializer"
