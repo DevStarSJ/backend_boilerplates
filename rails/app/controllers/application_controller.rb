@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include ErrorHandling
-  
+
   before_action :set_raven_context
 
   def current_user
