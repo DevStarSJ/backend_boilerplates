@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as FacebookTokenStrategy from 'passport-facebook';
+import { Strategy } from 'passport-facebook';
 import { use } from 'passport';
 
 @Injectable()
@@ -9,7 +9,7 @@ export class FacebookStrategy {
   }
   init() {
     use(
-      new FacebookTokenStrategy(
+      new Strategy(
         {
           clientID: process.env.FACEBOOK_APP_ID,
           clientSecret: process.env.FACEBOOK_APP_SECRET,
