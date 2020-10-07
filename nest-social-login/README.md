@@ -15,7 +15,7 @@ yarn add passport-line2
 
 ### Login
 - Google : <http://localhost:3000/google>
-- Facebook : using [react-facebook-login](https://github.com/keppelen/react-facebook-login)
+- Facebook : <http://localhost:3000/facebook>
 - Kakao : <http://localhost:3000/kakao>
 - Line : <http://localhost:3000/line>
 
