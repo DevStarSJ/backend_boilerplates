@@ -4,6 +4,9 @@ yarn add -D @types/passport-google-oauth20
 
 yarn add passport-facebook-token
 yarn add -D @types/passport-facebook-token
+
+yarn add passport-kakao
+yarn add -D @types/passport-kakao
 ```
 
 ### Login
