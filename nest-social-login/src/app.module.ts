@@ -6,10 +6,12 @@ import { FacebookController } from './facebook.controller';
 import { FacebookStrategy } from './facebook.strategy';
 import { KakaoController } from './kakao.controller';
 import { KakaoStrategy } from './kakao.strategy';
+import { LineController } from './line.controller';
+import { LineStrategy } from './line.strategy';
 
 @Module({
   imports: [],
-  controllers: [GoogleController, FacebookController, KakaoController],
-  providers: [AppService, GoogleStrategy, FacebookStrategy, KakaoStrategy],
+  controllers: [GoogleController, FacebookController, KakaoController, LineController],
+  providers: [AppService, GoogleStrategy, FacebookStrategy, KakaoStrategy, LineStrategy],
 })
 export class AppModule {}
