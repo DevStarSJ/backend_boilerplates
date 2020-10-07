@@ -11,6 +11,7 @@ export class KakaoController {
   @UseGuards(AuthGuard('kakao'))
   @Get('/oauth')
   async getTokenAfterKakaoSignIn(@Req() req) {
-    console.log(req.user);
+    console.log(req.user)
+    return req.user
   }
 }

@@ -6,11 +6,6 @@ import { AppService } from './app.service';
 export class GoogleController {
   constructor(private readonly appService: AppService) {}
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
-
   @Get()
   @UseGuards(AuthGuard('google'))
   async googleAuth(@Req() req) {}

@@ -11,6 +11,7 @@ export class LineController {
   @UseGuards(AuthGuard('line'))
   @Get('/callback')
   async getTokenAfterLineSignIn(@Req() req) {
-    console.log(req.user);
+    console.log(req.user)
+    return req.user
   }
 }

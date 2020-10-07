@@ -10,6 +10,9 @@ yarn add -D @types/passport-kakao
 
 yarn add passport-line2
 
+yarn add passport-naver
+yarn add -D @types/passport-naver
+
 ```
 - line 관련 npm들이 많은데 다른 것들은 모두 session 사용을 강제화
 
@@ -18,4 +21,5 @@ yarn add passport-line2
 - Facebook : <http://localhost:3000/facebook>
 - Kakao : <http://localhost:3000/kakao>
 - Line : <http://localhost:3000/line>
+- Naver : <http://localhost:3000/naver>
 

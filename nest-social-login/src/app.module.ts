@@ -8,10 +8,12 @@ import { KakaoController } from './kakao.controller';
 import { KakaoStrategy } from './kakao.strategy';
 import { LineController } from './line.controller';
 import { LineStrategy } from './line.strategy';
+import { NaverController } from './naver.controller';
+import { NaverStrategy } from './naver.strategy';
 
 @Module({
   imports: [],
-  controllers: [GoogleController, FacebookController, KakaoController, LineController],
-  providers: [AppService, GoogleStrategy, FacebookStrategy, KakaoStrategy, LineStrategy],
+  controllers: [GoogleController, FacebookController, KakaoController, LineController, NaverController],
+  providers: [AppService, GoogleStrategy, FacebookStrategy, KakaoStrategy, LineStrategy, NaverStrategy],
 })
 export class AppModule {}
