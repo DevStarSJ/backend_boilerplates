@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import * as FacebookTokenStrategy from 'passport-facebook-token';
+import * as FacebookTokenStrategy from 'passport-facebook';
 import { use } from 'passport';
 
 @Injectable()
@@ -13,6 +13,7 @@ export class FacebookStrategy {
         {
           clientID: process.env.FACEBOOK_APP_ID,
           clientSecret: process.env.FACEBOOK_APP_SECRET,
+          callbackURL: 'http://localhost:3000/facebook/callback',
         },
         async (
           accessToken: string,

@@ -2,8 +2,8 @@
 yarn add @nestjs/passport passport passport-google-oauth20 dotenv
 yarn add -D @types/passport-google-oauth20 
 
-yarn add passport-facebook-token
-yarn add -D @types/passport-facebook-token
+yarn add passport-facebook
+yarn add -D @types/passport-facebook
 
 yarn add passport-kakao
 yarn add -D @types/passport-kakao
