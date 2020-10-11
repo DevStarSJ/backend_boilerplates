@@ -5,7 +5,7 @@ import constants from '../constants'
 import { User } from '../models/user'
 
 @Injectable()
-export class AuthService {
+export default class AuthService {
   constructor(
     private jwtService: JwtService,
   ) {}

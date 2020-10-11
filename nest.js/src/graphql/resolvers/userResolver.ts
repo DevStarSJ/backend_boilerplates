@@ -1,5 +1,5 @@
 import { Resolver, Query, Args, Mutation, ResolveField, Parent } from '@nestjs/graphql'
-import { UserService } from '../../services/userService'
+import UserService from '../../services/userService'
 import { User } from '../../models/user'
 import { SignUpType } from '../../types/signUpType'
 import { SignInInput } from '../../inputs/signInInput'

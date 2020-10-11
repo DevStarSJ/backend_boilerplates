@@ -79,8 +79,8 @@ type Query {
 }
 
 input SignInInput {
+  email: String!
   password: String!
-  username: String!
 }
 
 type SignUpType {
@@ -98,17 +98,17 @@ type SuccessType {
 
 type User {
   createdAt: DateTime!
+  email: String!
   id: ID!
   items: [Item!]
   password: String!
   updatedAt: DateTime!
-  username: String!
 }
 
 type UserType {
   createdAt: DateTime!
+  email: String!
   id: Float!
   items: [Item!]
   updatedAt: DateTime!
-  username: String!
 }

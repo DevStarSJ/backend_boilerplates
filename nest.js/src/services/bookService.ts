@@ -4,7 +4,7 @@ import Genre from 'src/models/genre'
 import Book from '../models/book'
 
 @Injectable()
-export class BookService {
+export default class BookService {
 
   async bookCount(): Promise<number> {
     const author = new Author()

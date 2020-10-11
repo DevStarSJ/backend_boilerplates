@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common'
-import { BookService } from '../services/bookService'
+import BookService from '../services/bookService'
 
 @Controller()
-export class BookController {
+export default class BookController {
 
   constructor(
     private bookService: BookService

@@ -1,10 +1,10 @@
 import { Injectable, Inject, forwardRef } from '@nestjs/common'
-import { AuthService } from './authService'
+import AuthService from './authService'
 import { User } from '../models/user'
 import L from 'lodash'
 
 @Injectable()
-export class UserService {
+export default class UserService {
 
   constructor(
     @Inject(forwardRef(() => AuthService))

@@ -1,11 +1,11 @@
 import { Controller, Get, UseGuards, Request, Post, Body, UnauthorizedException } from '@nestjs/common'
 import { ApiBody, ApiBearerAuth } from '@nestjs/swagger'
-import { JwtAuthGuard } from '../services/auth/jwtAuthGuard'
-import { UserService } from '../services/userService'
+import JwtAuthGuard from '../services/auth/jwtAuthGuard'
+import UserService from '../services/userService'
 import { SignInInput } from '../inputs/signInInput'
 
 @Controller()
-export class UserController {
+export default class UserController {
 
   constructor(
     private usersService: UserService

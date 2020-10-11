@@ -4,7 +4,7 @@ import { ItemInput } from 'src/inputs/itemInput'
 import { getManager } from 'typeorm'
 
 @Injectable()
-export class ItemService {
+export default class ItemService {
   async create(params: ItemInput) {
     const item = new Item(params)
     await item.save()

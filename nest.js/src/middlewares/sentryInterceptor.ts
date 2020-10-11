@@ -12,7 +12,7 @@ import * as Sentry from '@sentry/minimal'
 require('@sentry/tracing') // 선언만
 
 init({
-  dsn: process.env.SENTRY_KEY,
+  dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 1.0,
 })
 
