@@ -19,7 +19,7 @@ export class UserResolver {
 
   @Mutation(() => SignUpType)
   async signUp(@Args('data') data: SignInInput) {
-    return await this.userService.signUp(data.username, data.password)
+    return await this.userService.signUp(data.email, data.password)
   }
 
   @ResolveField()

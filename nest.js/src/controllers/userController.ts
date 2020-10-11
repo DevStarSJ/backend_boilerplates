@@ -14,16 +14,16 @@ export class UserController {
   @Post('users/sign_up')
   @ApiBody({ type: SignInInput, required: true })
   async signUp( //@Body() body: SignInInput) {
-    @Body('username') username: string,
+    @Body('email') email: string,
     @Body('password') password: string,
   ) {
-    return await this.usersService.signUp(username, password)
+    return await this.usersService.signUp(email, password)
   }
 
   @Post('users/sign_in')
   async signIn(@Body() body: SignInInput) {
-    const result = await this.usersService.signIn(body.username, body.password)
-    if (!result.success) throw new UnauthorizedException('username or password are incorrect')
+    const result = await this.usersService.signIn(body.email, body.password)
+    if (!result.success) throw new UnauthorizedException('email or password are incorrect')
     return result
   }
 

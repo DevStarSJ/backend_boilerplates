@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger'
 export class SignInInput {
   @Field()
   @ApiProperty()
-  readonly username!: string
+  readonly email!: string
 
   @Field()
   @ApiProperty()

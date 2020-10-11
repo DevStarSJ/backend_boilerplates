@@ -8,7 +8,7 @@ export class UserType {
   readonly id?: number
 
   @Field()
-  username!: string
+  email!: string
 
   @Field(() => [Item], { nullable: true })
   items?: Item[]

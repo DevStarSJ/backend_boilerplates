@@ -11,7 +11,7 @@ export class User extends BaseEntity {
 
   @Column({unique: true})
   @Field({ nullable: false })
-  public username: string
+  public email: string
 
   @Column()
   @Field({ nullable: false })
@@ -36,9 +36,9 @@ export class User extends BaseEntity {
   @DeleteDateColumn({name: 'deleted_at',type: 'timestamp'})
   public deletedAt: Date
 
-  constructor(username: string, password: string) {
+  constructor(email: string, password: string) {
     super()
-    this.username = username
+    this.email = email
     this.password = password
   }
 }

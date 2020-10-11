@@ -11,9 +11,9 @@ export class UserService {
     private authService: AuthService
   ) {}
 
-  async signUp(username: string, password: string) {
+  async signUp(email: string, password: string) {
     const user = new User(
-      username,
+      email,
       this.authService.encryptPassword(password)
     )
     await user.save()
@@ -23,8 +23,8 @@ export class UserService {
     }
   }
 
-  async signIn(username: string, password: string) {
-    const users = await User.find({ where: { username } })
+  async signIn(email: string, password: string) {
+    const users = await User.find({ where: { email } })
     const user = L.get(users, 0)
     if (!user) return { success: false }
     if (!this.authService.verifyPassword(user, password)) return { success: false }

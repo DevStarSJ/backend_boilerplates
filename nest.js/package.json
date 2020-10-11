@@ -23,7 +23,8 @@
     "test:e2e": "jest --config ./test/e2e/config.json",
     "migration:create": "nest build && typeorm migration:create -n",
     "migration:run": "yarn prebuild && nest build && typeorm migration:run",
-    "migration:clear": "rimraf dist/migration"
+    "migration:clear": "rimraf dist/migration",
+    "schema:drop": "typeorm schema:drop"
   },
   "dependencies": {
     "@nestjs/common": "^7.0.0",
