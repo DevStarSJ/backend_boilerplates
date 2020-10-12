@@ -1,5 +1,5 @@
-import { createTable } from "src/utils/typeormMigrationHelper";
-import {MigrationInterface, QueryRunner} from "typeorm";
+import { createTable } from 'src/utils/typeormMigrationHelper'
+import {MigrationInterface, QueryRunner} from 'typeorm'
 
 export class createSocialAuth1602460368375 implements MigrationInterface {
 
