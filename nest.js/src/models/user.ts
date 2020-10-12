@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, BaseEntity, DeleteDateColumn } from 'typeorm'
 import { Item } from './item'
 import { ObjectType, Field, ID } from '@nestjs/graphql'
+import { SocialAuth } from './socialAuth'
 
 @ObjectType()
 @Entity('users')
@@ -14,16 +15,16 @@ export class User extends BaseEntity {
   public email: string
 
   @Column()
-  @Field({ nullable: false })
+  @Field({ nullable: true })
   public password: string
-
-  // @Field(() => [Item], { nullable: true })
-  // @OneToMany(() => Item, item => item.user)
-  // items: Item[]
 
   @Field(() => [Item], { nullable: true })
   @OneToMany(() => Item, item => item.user)
   items: Promise<Item[]>
+
+  @Field(() => [SocialAuth], { nullable: true })
+  @OneToMany(() => SocialAuth, socialAuth => socialAuth.user)
+  socialAuths: Promise<SocialAuth[]>
 
   @Field()
   @CreateDateColumn({name: 'created_at', type: 'timestamp'})

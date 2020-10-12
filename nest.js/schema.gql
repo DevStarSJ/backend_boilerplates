@@ -88,6 +88,16 @@ type SignUpType {
   user: UserType!
 }
 
+type SocialAuth {
+  createdAt: DateTime!
+  id: ID!
+  service: String!
+  serviceId: String!
+  updatedAt: DateTime!
+  user: User
+  userId: ID!
+}
+
 type Subscription {
   bookAdded: Book!
 }
@@ -101,7 +111,8 @@ type User {
   email: String!
   id: ID!
   items: [Item!]
-  password: String!
+  password: String
+  socialAuths: [SocialAuth!]
   updatedAt: DateTime!
 }
 
