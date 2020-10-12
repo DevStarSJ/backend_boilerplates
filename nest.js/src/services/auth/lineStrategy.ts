@@ -15,6 +15,7 @@ export default class LineStrategy {
           channelSecret: process.env.LINE_CHANNEL_SECRET,
           callbackURL: `${process.env.SERVER_URL}/auth/line/redirect`,
           session: false,
+          scopeSeparator: ['openid', 'profile', 'email' ]
         },
         async (
           accessToken: string,

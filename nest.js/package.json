@@ -54,6 +54,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "passport-kakao": "^1.0.0",
+    "passport-line-auth": "^0.2.9",
     "passport-line2": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",

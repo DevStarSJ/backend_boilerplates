@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { Strategy } from 'passport-naver'
 import { use } from 'passport'
+import AuthService from '../authService'
 
 @Injectable()
 export default class NaverStrategy {
-  constructor() {
+  constructor(private authService: AuthService) {
     this.init()
   }
   init() {
@@ -21,9 +22,9 @@ export default class NaverStrategy {
           profile: any,
           done: any,
         ) => {
-          const user = {}
           console.log(accessToken, refreshToken, profile)
-          return done(null, user)
+          const result = await this.authService.naverValidate(profile)
+          done(null, result)
         },
       ),
     )

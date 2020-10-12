@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { Strategy } from 'passport-facebook'
 import { use } from 'passport'
+import AuthService from '../authService'
 
 @Injectable()
 export default class FacebookStrategy {
-  constructor() {
+  constructor(private authService: AuthService) {
     this.init()
   }
   init() {
@@ -14,6 +15,7 @@ export default class FacebookStrategy {
           clientID: process.env.FACEBOOK_APP_ID,
           clientSecret: process.env.FACEBOOK_APP_SECRET,
           callbackURL: `${process.env.SERVER_URL}/auth/facebook/redirect`,
+          profileFields: ['id', 'displayName', 'photos', 'email']
         },
         async (
           accessToken: string,
@@ -21,9 +23,9 @@ export default class FacebookStrategy {
           profile: any,
           done: any,
         ) => {
-          const user = {}
           console.log(accessToken, refreshToken, profile)
-          return done(null, user)
+          const result = await this.authService.facebookValidate(profile)
+          done(null, result)
         },
       ),
     )
