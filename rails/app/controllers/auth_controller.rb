@@ -19,7 +19,8 @@ class AuthController < ApplicationController
   #   provides_callback_for provider
   # end
 
-  def google_auth2
+  def google
+    puts request.env['omniauth.auth'].except('extra')
     binding.pry
   end
 

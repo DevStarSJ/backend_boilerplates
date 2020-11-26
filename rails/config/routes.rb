@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   post '/user/sign_up', to: 'user#sign_up'
   post '/user/sign_in', to: 'user#sign_in'
   get '/user/me', to: 'user#me'
+
+  get 'auth/google', to: redirect('/auth/google_oauth2')
+  get 'auth/google_oauth2/callback', to: 'auth#google'
 end
