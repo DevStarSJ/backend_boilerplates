@@ -20,10 +20,8 @@ class AuthController < ApplicationController
   # end
 
   def google
-    puts request.env['omniauth.auth'].except('extra')
-    auth = request.env['omniauth.auth'].except('extra').to_h
-    # binding.pry
-    render json: auth
+    user = SocialAuthService.google(request.env['omniauth.auth'].except('extra').to_h)
+    render json: user
   end
 
   def after_sign_in_path_for(resource)
