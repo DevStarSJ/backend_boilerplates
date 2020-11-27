@@ -34,6 +34,57 @@ class SocialAuthService
     social_auth.user
   end
 
+  def self.naver(params)
+    return nil unless params["provider"].present? && params["uid"].present? && params["info"].present?
+    return nil unless params["provider"] == 'naver'
+
+    social_auth = SocialAuth.where(provider: params["provider"], uid: params["uid"]).first_or_create do |auth|
+      auth.provider = params["provider"]
+      auth.uid = params["uid"]
+      auth.email = params["info"]["email"]
+      auth.first_name = params["info"]["name"]
+      auth.photo = params["info"]["image"]
+
+      link_user(auth)
+    end
+
+    social_auth.user
+  end
+
+  def self.line(params)
+    return nil unless params["provider"].present? && params["uid"].present? && params["info"].present?
+    return nil unless params["provider"] == 'line'
+
+    social_auth = SocialAuth.where(provider: params["provider"], uid: params["uid"]).first_or_create do |auth|
+      auth.provider = params["provider"]
+      auth.uid = params["uid"]
+      auth.email = params["info"]["name"] # line은 email 정보를 안준다. Front에서 추가 구현 필요
+      auth.first_name = params["info"]["name"]
+      auth.photo = params["info"]["image"]
+
+      link_user(auth)
+    end
+
+    social_auth.user
+  end
+
+  def self.kakao(params)
+    return nil unless params["provider"].present? && params["uid"].present? && params["info"].present?
+    return nil unless params["provider"] == 'kakao'
+
+    social_auth = SocialAuth.where(provider: params["provider"], uid: params["uid"]).first_or_create do |auth|
+      auth.provider = params["provider"]
+      auth.uid = params["uid"]
+      auth.email = params["info"]["name"] # line은 email 정보를 안준다. Front에서 추가 구현 필요
+      auth.first_name = params["info"]["name"]
+      auth.photo = params["info"]["image"]
+
+      link_user(auth)
+    end
+
+    social_auth.user
+  end
+
   def self.link_user(auth)
     return if auth.user_id.present?
 

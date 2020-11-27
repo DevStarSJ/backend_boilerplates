@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   get 'auth/google', to: redirect('/auth/google_oauth2')
   get 'auth/google_oauth2/callback', to: 'auth#google'
   get 'auth/facebook/callback', to: 'auth#facebook'
+  get 'auth/kakao/callback', to: 'auth#kakao'
+  get 'kakao/oauth', to: 'auth#kakao'
+  get 'auth/naver/callback', to: 'auth#naver'
+  get 'auth/line/callback', to: 'auth#line'
 end

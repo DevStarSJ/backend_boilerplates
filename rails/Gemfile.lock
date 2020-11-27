@@ -5,6 +5,14 @@ GIT
     symbol_serializer (0.1.0)
 
 GIT
+  remote: https://github.com/DevStarSJ/omniauth-kakao
+  revision: e95896adeda26781c16f157989bed38b9895cd47
+  specs:
+    omniauth-kakao (0.2.0)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.3.1)
+
+GIT
   remote: https://github.com/Envek/graphql-preload
   revision: 5040f7851bca3ce1044f8171b8301a2784720505
   specs:
@@ -269,13 +277,17 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (8.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.8.0)
-      jwt (>= 2.0)
-      omniauth (>= 1.1.1)
-      omniauth-oauth2 (>= 1.6)
-    omniauth-oauth2 (1.7.0)
-      oauth2 (~> 1.4)
-      omniauth (~> 1.9)
+    omniauth-google-oauth2 (0.2.6)
+      omniauth (> 1.0)
+      omniauth-oauth2 (~> 1.1)
+    omniauth-line (0.0.5)
+      json (>= 2.3.0)
+      omniauth-oauth2 (~> 1.3)
+    omniauth-naver (0.2.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth2 (1.3.1)
+      oauth2 (~> 1.0)
+      omniauth (~> 1.2)
     parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -525,6 +537,9 @@ DEPENDENCIES
   olive_branch
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-kakao!
+  omniauth-line
+  omniauth-naver
   pry-rails
   puma (~> 4.1)
   pundit
