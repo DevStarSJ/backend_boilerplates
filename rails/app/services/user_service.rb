@@ -4,7 +4,7 @@ class UserService
   end
 
   def self.sign_in(params)
-    user = User.find_by(username: params[:username])
+    user = User.find_by(email: params[:email])
     if user.authenticate(params[:password])
       {
         success: true,

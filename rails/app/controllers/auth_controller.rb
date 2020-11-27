@@ -21,7 +21,9 @@ class AuthController < ApplicationController
 
   def google
     puts request.env['omniauth.auth'].except('extra')
-    binding.pry
+    auth = request.env['omniauth.auth'].except('extra').to_h
+    # binding.pry
+    render json: auth
   end
 
   def after_sign_in_path_for(resource)

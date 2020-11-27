@@ -1,6 +1,6 @@
 module Mutations
   class Users::SignUpUser < BaseMutation
-    argument :username, String, required: false
+    argument :email, String, required: false
     argument :password, String, required: false
 
     field :success, Boolean, null: true

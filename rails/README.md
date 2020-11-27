@@ -22,3 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```bash
+rails g model SocialModel provider:string uid:string first_name:string last_name:string email:string photo:string user:references
+```

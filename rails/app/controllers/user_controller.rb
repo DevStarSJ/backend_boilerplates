@@ -12,6 +12,6 @@ class UserController < ApplicationController
   end
 
   def sign_up_params
-    params.permit(:username, :password)
+    params.permit(:email, :password)
   end
 end
