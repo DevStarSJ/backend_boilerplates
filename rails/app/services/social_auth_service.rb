@@ -7,20 +7,20 @@ class SocialAuthService
     return nil unless params["provider"].present? && params["uid"].present? && params["info"].present?
     return nil unless params["provider"].include?('google')
 
-    params = {
-      provider: 'google',
-      uid: params["uid"],
-      email: params["info"]["email"],
-      first_name: params["info"]["first_name"],
-      last_name: params["info"]["last_name"],
-      photo: params["info"]["image"]
-    }
+    social_auth = SocialAuth.where(provider: 'google', uid: params["uid"]).first_or_create do |auth|
+      auth.provider = 'google'
+      auth.uid = params["uid"]
+      auth.email = params["info"]["email"]
+      auth.first_name = params["info"]["first_name"]
+      auth.last_name = params["info"]["last_name"]
+      auth.photo = params["info"]["image"]
+      
+      if auth.user_id.blank?
+        user = User.create(email: params["info"]["email"])
+        auth.user = user
+      end
+    end
 
-    social_auth = SocialAuth.where(provider: params[:provider]).find_by(uid: params[:uid])      
-    return social_auth.user if social_auth.present?
-
-    user = User.create(email: params[:email], password: params[:email])
-    user.social_auths.create(params)
-    user
+    social_auth.user
   end
 end
