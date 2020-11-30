@@ -1,16 +1,18 @@
 GIT
-  remote: https://github.com/Bizongo/symbol-serializer
-  revision: 20bb58a50f42e1775ab6c2e4a94993ddc24c0b68
-  specs:
-    symbol_serializer (0.1.0)
-
-GIT
   remote: https://github.com/DevStarSJ/omniauth-kakao
-  revision: e95896adeda26781c16f157989bed38b9895cd47
+  revision: 07b807f5db74899bea6c4f935d2e1248645b9667
   specs:
     omniauth-kakao (0.2.0)
       omniauth (~> 1.0)
-      omniauth-oauth2 (~> 1.3.1)
+      omniauth-oauth2 (~> 1.7.0)
+
+GIT
+  remote: https://github.com/DevStarSJ/omniauth-line
+  revision: 4d6ff538a754c3d5ee58b547db4fff4fde19b9fd
+  specs:
+    omniauth-line (0.0.5)
+      json (>= 2.3.0)
+      omniauth-oauth2 (~> 1.7.0)
 
 GIT
   remote: https://github.com/Envek/graphql-preload
@@ -226,7 +228,7 @@ GEM
     kwalify (0.7.2)
     launchy (2.5.0)
       addressable (~> 2.7)
-    listen (3.3.1)
+    listen (3.3.2)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logglier (0.5.0)
@@ -277,17 +279,15 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (8.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.2.6)
-      omniauth (> 1.0)
-      omniauth-oauth2 (~> 1.1)
-    omniauth-line (0.0.5)
-      json (>= 2.3.0)
-      omniauth-oauth2 (~> 1.3)
+    omniauth-google-oauth2 (0.8.0)
+      jwt (>= 2.0)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.6)
     omniauth-naver (0.2.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-oauth2 (1.3.1)
-      oauth2 (~> 1.0)
-      omniauth (~> 1.2)
+    omniauth-oauth2 (1.7.0)
+      oauth2 (~> 1.4)
+      omniauth (~> 1.9)
     parallel (1.20.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -446,10 +446,12 @@ GEM
       rack (~> 2.0)
       redis (>= 4.2.0)
     silencer (1.0.1)
-    simplecov (0.19.1)
+    simplecov (0.20.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.2)
     slack-notifier (2.3.2)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
@@ -498,7 +500,7 @@ GEM
     websocket-extensions (0.1.5)
     wisper-rspec (1.1.0)
     yard (0.9.25)
-    zeitwerk (2.4.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
@@ -538,7 +540,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-kakao!
-  omniauth-line
+  omniauth-line!
   omniauth-naver
   pry-rails
   puma (~> 4.1)
@@ -568,7 +570,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   strip_attributes
-  symbol_serializer!
   syslogger (~> 1.6.0)
   terminal-notifier
   terminal-notifier-guard

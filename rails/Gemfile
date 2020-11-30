@@ -56,15 +56,14 @@ gem 'sentry-raven'
 gem 'shrine', '~> 3.3'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'sidekiq'
-gem "symbol_serializer", git: "https://github.com/Bizongo/symbol-serializer"
+# gem "symbol_serializer", git: "https://github.com/Bizongo/symbol-serializer"
 
 gem 'rubyXL'
-
+gem 'omniauth-kakao', git: "https://github.com/DevStarSJ/omniauth-kakao"
+gem 'omniauth-line', git: "https://github.com/DevStarSJ/omniauth-line"
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
-gem 'omniauth-kakao', git: "https://github.com/DevStarSJ/omniauth-kakao"
 gem 'omniauth-naver'
-gem 'omniauth-line'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

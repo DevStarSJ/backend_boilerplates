@@ -58,7 +58,7 @@ class SocialAuthService
     social_auth = SocialAuth.where(provider: params["provider"], uid: params["uid"]).first_or_create do |auth|
       auth.provider = params["provider"]
       auth.uid = params["uid"]
-      auth.email = params["info"]["name"] # line은 email 정보를 안준다. Front에서 추가 구현 필요
+      auth.email = params["info"]["email"]
       auth.first_name = params["info"]["name"]
       auth.photo = params["info"]["image"]
 
@@ -75,7 +75,7 @@ class SocialAuthService
     social_auth = SocialAuth.where(provider: params["provider"], uid: params["uid"]).first_or_create do |auth|
       auth.provider = params["provider"]
       auth.uid = params["uid"]
-      auth.email = params["info"]["name"] # line은 email 정보를 안준다. Front에서 추가 구현 필요
+      auth.email = params["info"]["email"]
       auth.first_name = params["info"]["name"]
       auth.photo = params["info"]["image"]
 
