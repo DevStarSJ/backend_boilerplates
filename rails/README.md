@@ -26,3 +26,9 @@ Things you may want to cover:
 ```bash
 rails g model SocialModel provider:string uid:string first_name:string last_name:string email:string photo:string user:references
 ```
+
+### Multiple Schema
+
+```bash
+rails g model item name:string price:int user:referneces --database second
+```

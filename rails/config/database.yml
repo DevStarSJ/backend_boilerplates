@@ -1,19 +1,32 @@
-development: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  username: <%= ENV.fetch("MYSQL_USERNAME") { "root" } %>
-  password: <%= ENV.fetch("MYSQL_PASSWORD") { "admin" } %>
-  host: <%= ENV.fetch("MYSQL_HOST") { "127.0.0.1" } %>
-  port: <%= ENV.fetch("MYSQL_PORT") { 3306 } %>
-  timeout: 5000
-  reconnect: <%= ENV.fetch("MYSQL_RECONNECT", true) == "true" %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV.fetch("DEBUG_PRODUCTION", "0") == "1" ? "test_rb" : "test_rb_development" %>
+development:
+  main: &default
+    adapter: mysql2
+    encoding: utf8mb4
+    username: <%= ENV.fetch("MYSQL_USERNAME") { "root" } %>
+    password: <%= ENV.fetch("MYSQL_PASSWORD") { "admin" } %>
+    host: <%= ENV.fetch("MYSQL_HOST") { "127.0.0.1" } %>
+    port: <%= ENV.fetch("MYSQL_PORT") { 3306 } %>
+    timeout: 5000
+    reconnect: <%= ENV.fetch("MYSQL_RECONNECT", true) == "true" %>
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    database: <%= ENV.fetch("DEBUG_PRODUCTION", "0") == "1" ? "main" : "main_development" %>
+  second: &default_second
+    <<: *default
+    database: <%= ENV.fetch("DEBUG_PRODUCTION", "0") == "1" ? "second" : "second_development" %>
+    migrations_paths: db/second_migrate
 
 test:
-  <<: *default
-  database: test_rb_test
+  main:
+    <<: *default
+    database: "main_test"
+  second:
+    <<: *default_second
+    database: "second_test"
 
 production:
-  <<: *default
-  database: test_rb_development
+  main:
+    <<: *default
+    database: "main"
+  second:
+    <<: *default_second
+    database: "second"

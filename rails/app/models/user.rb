@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_secure_password validations: false
 
   has_many :social_auths
+  has_many :second_items, class_name: 'Second::Item'
 
   validates :email, presence: true, uniqueness: true
   # validates :password, allow_nil: false, :if => new_record?
