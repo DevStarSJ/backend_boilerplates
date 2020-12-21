@@ -3,6 +3,7 @@
 # Table name: second_development.items
 #
 #  id         :bigint           not null, primary key
+#  category   :string(255)
 #  name       :string(255)
 #  price      :integer
 #  created_at :datetime         not null
