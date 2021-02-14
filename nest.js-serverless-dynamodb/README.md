@@ -3,6 +3,9 @@
 ```bash
 npm i -g @nestjs/cli
 nest new nest.js-serverless-dynamodb
+yarn add @nestjs/graphql @nestjs/jwt @nestjs/passport @nestjs/platform-express apollo-server-express bcrypt cors dotenv graphql lodash passport
+yarn add @types/bcrypt @types/lodash -D
+yarn add dynamoose nestjs-dynamoose
 ```
 
 <p align="center">
