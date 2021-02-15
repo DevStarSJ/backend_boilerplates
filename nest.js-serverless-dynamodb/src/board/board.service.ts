@@ -10,7 +10,6 @@ export class BoardService {
   ) {}
 
   create(board: BoardInput) {
-    console.log(board)
     const now = new Date().toISOString()
     const params = {
       id: Math.floor(+new Date() / 1000).toString(),
@@ -19,12 +18,16 @@ export class BoardService {
       valid: 'true',
       ...board,
     }
-    console.log(params)
     return this.boardModel.create(params)
   }
 
-  update(key: BoardKey, board: Partial<Board>) {
-    return this.boardModel.update(key, board);
+  update(key: BoardKey, board: BoardInput) {
+    const now = new Date().toISOString()
+    const params = {
+      updatedAt: now,
+      ...board,
+    }
+    return this.boardModel.update(key, params)
   }
 
   findOne(key: BoardKey) {
