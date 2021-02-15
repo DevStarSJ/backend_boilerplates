@@ -4,8 +4,8 @@
 npm i -g @nestjs/cli
 nest new nest.js-serverless-dynamodb
 yarn add @nestjs/graphql @nestjs/jwt @nestjs/passport @nestjs/platform-express apollo-server-express bcrypt cors dotenv graphql lodash passport
-yarn add @types/bcrypt @types/lodash -D
-yarn add dynamoose nestjs-dynamoose
+yarn add dynamoose nestjs-dynamoose aws-sdk multer
+yarn add @types/bcrypt @types/lodash @types/aws-sdk -D
 ```
 
 <p align="center">

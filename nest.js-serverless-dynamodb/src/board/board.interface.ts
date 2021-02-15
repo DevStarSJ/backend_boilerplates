@@ -14,5 +14,6 @@ export interface Board extends BoardKey {
 export interface BoardInput {
   title: string,
   url: string,
-  category: string
+  category?: string,
+  filename?: string,
 }
