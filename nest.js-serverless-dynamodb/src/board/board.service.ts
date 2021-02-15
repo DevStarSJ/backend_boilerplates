@@ -31,10 +31,14 @@ export class BoardService {
   }
 
   findOne(key: BoardKey) {
-    return this.boardModel.get(key);
+    return this.boardModel.get(key)
   }
 
   findAll() {
-    return this.boardModel.scan().exec();
+    return this.boardModel.scan().exec()
+  }
+  
+  delete(key: any) {
+    return this.boardModel.delete(key)
   }
 }

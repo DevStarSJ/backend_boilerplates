@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { BoardInput } from './board.interface';
 import { BoardService } from './board.service';
 
@@ -16,16 +16,20 @@ export class BoardController {
     return this.boardService.create(board)
   }
 
-  @Post(':id')
+  @Post(':category/:id')
   update(
-    @Param() param,
-    @Body('category') category: string,
-    @Body('board') board: BoardInput) {
-    const key = {
-      id: param.id,
-      category: category,
-    }
-    console.log(key)
+    @Param('id') id: string,
+    @Param('category') category: string,
+    @Body() board: BoardInput) {
+    const key = { id, category }
     return this.boardService.update(key, board)
+  }
+
+  @Delete(':category/:id')
+  delete(
+    @Param('id') id: string,
+    @Param('category') category: string) {
+    const key = { id, category }
+    return this.boardService.delete(key)
   }
 }
