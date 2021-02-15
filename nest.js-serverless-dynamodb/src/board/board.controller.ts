@@ -7,6 +7,11 @@ import { BoardService } from './board.service';
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
+  @Get(':category')
+  findCategory(@Param('category') category: string) {
+    return this.boardService.find(category)
+  }
+
   @Get()
   findAll() {
     return this.boardService.findAll()

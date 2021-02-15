@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { SortOrder } from 'dynamoose/dist/General';
 import { InjectModel, Model } from 'nestjs-dynamoose';
 import { Board, BoardInput, BoardKey } from './board.interface';
 import { FilesService } from './file.service';
@@ -50,12 +51,12 @@ export class BoardService {
   findAll() {
     return this.boardModel.scan().exec()
   }
+
+  find(category: string) {
+    return this.boardModel.query({category: { eq: category}}).using('category-id-index').sort(SortOrder.ascending).exec()
+  }
   
   delete(key: any) {
     return this.boardModel.delete(key)
-  }
-
-  fileUpload(file: Buffer, filename: string) {
-
   }
 }
