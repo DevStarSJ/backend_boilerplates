@@ -1,10 +1,6 @@
-import { Module } from '@nestjs/common';
-import { DynamooseModule } from 'nestjs-dynamoose';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BoardController } from './board/board.controller';
-import { BoardModule } from './board/board.module';
-import { BoardService } from './board/board.service';
+import { Module } from '@nestjs/common'
+import { DynamooseModule } from 'nestjs-dynamoose'
+import { BoardModule } from './board/board.module'
 
 @Module({
   imports: [
@@ -22,7 +18,7 @@ import { BoardService } from './board/board.service';
     }),
     BoardModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

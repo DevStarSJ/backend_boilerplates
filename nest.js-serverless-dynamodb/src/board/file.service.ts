@@ -21,7 +21,6 @@ export class FilesService {
       ACL: 'public-read',
     }).promise()
     
-    console.log(uploadResult)
     return uploadResult.Location
   }
 }

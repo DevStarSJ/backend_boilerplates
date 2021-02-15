@@ -4,9 +4,13 @@
 npm i -g @nestjs/cli
 nest new nest.js-serverless-dynamodb
 yarn add @nestjs/graphql @nestjs/jwt @nestjs/passport @nestjs/platform-express apollo-server-express bcrypt cors dotenv graphql lodash passport
-yarn add dynamoose nestjs-dynamoose aws-sdk multer
-yarn add @types/bcrypt @types/lodash @types/aws-sdk -D
+yarn add dynamoose nestjs-dynamoose aws-sdk multer aws-serverless-express
+yarn add @types/bcrypt @types/lodash @types/aws-sdk @types/aws-serverless-express @types/aws-lambda serverless serverless-plugin-typescript @types/serverless -D
+
+brew install serverless
 ```
+
+- serverless cli 설치 : <https://www.serverless.com/framework/docs/getting-started>
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
