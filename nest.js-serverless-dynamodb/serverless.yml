@@ -24,6 +24,10 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: arn:aws:dynamodb:${self:provider.region}:*:*
+    - Effect: Allow
+      Action:
+        - s3:*
+      Resource: "*"
 
 plugins:
   - serverless-plugin-typescript
