@@ -3,9 +3,9 @@
 ```bash
 npm i -g @nestjs/cli
 nest new nest.js-serverless-dynamodb
-yarn add @nestjs/graphql @nestjs/jwt @nestjs/passport @nestjs/platform-express apollo-server-express bcrypt cors dotenv graphql lodash passport
+yarn add @nestjs/graphql @nestjs/jwt @nestjs/passport @nestjs/platform-express apollo-server-express cors dotenv graphql lodash passport passport-jwt
 yarn add dynamoose nestjs-dynamoose aws-sdk multer aws-serverless-express
-yarn add @types/bcrypt @types/lodash @types/aws-sdk @types/aws-serverless-express @types/aws-lambda serverless serverless-plugin-typescript @types/serverless -D
+yarn add @types/lodash @types/aws-sdk @types/aws-serverless-express @types/aws-lambda serverless serverless-plugin-typescript @types/serverless @types/passport-jwt -D
 
 brew install serverless
 ```

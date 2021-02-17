@@ -10,7 +10,11 @@ provider:
     STAGE: ${self:provider.stage}
     REGION: ${self:provider.region}
     NO_COLOR: ${env:NO_COLOR, 'true'}
-    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME, 'sociocracy-web'}
+    S3_BUCKET_NAME: ${env:S3_BUCKET_NAME, ''}
+    SECRET_KEY: ${env:SECRET_KEY, ''}
+    USERNAME: ${env:USERNAME, ''}
+    PASSWORD: ${env:PASSWORD, ''}
+    JWT_EXPIRES_IN: ${env:JWT_EXPIRES_IN, '1d'}
   apiGateway:
     shouldStartNameWithService: true
   iamRoleStatements:

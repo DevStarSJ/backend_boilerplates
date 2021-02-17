@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import JwtAuthGuard from 'src/auth/jwt.auth.guard';
 import { BoardInput } from './board.interface';
 import { BoardService } from './board.service';
 
@@ -18,6 +19,7 @@ export class BoardController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
   create(
     @Body() board: BoardInput,
@@ -27,6 +29,7 @@ export class BoardController {
   }
 
   @Post(':category/:id')
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
   update(
     @Param('id') id: string,
@@ -38,6 +41,7 @@ export class BoardController {
   }
 
   @Delete(':category/:id')
+  @UseGuards(JwtAuthGuard)
   delete(
     @Param('id') id: string,
     @Param('category') category: string) {

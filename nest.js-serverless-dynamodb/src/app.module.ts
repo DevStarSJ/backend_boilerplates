@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common'
 import { DynamooseModule } from 'nestjs-dynamoose'
+import AuthModule from './auth/auth.module'
 import { BoardModule } from './board/board.module'
 
 @Module({
@@ -17,6 +18,7 @@ import { BoardModule } from './board/board.module'
       },
     }),
     BoardModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
