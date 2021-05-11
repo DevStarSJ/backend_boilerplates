@@ -45,7 +45,7 @@
     "graphql": "^15.3.0",
     "graphql-subscriptions": "^1.1.0",
     "graphql-tools": "^6.2.2",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "newrelic": "^6.13.0",
