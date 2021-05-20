@@ -259,7 +259,7 @@ GEM
     mysql2 (0.5.3)
     nenv (0.3.0)
     newrelic_rpm (6.14.0)
-    nio4r (2.5.4)
+    nio4r (2.5.7)
     nokogiri (1.11.0)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -303,7 +303,7 @@ GEM
       pry (>= 0.10.4)
     psych (3.2.0)
     public_suffix (4.0.6)
-    puma (4.3.6)
+    puma (4.3.8)
       nio4r (~> 2.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
@@ -547,7 +547,7 @@ DEPENDENCIES
   omniauth-line!
   omniauth-naver
   pry-rails
-  puma (~> 4.1)
+  puma (~> 4.3)
   pundit
   pundit-matchers (~> 1.0.2)
   rack-cors
